@@ -1,0 +1,22 @@
+data:
+  corpus:                                 
+    name: 'Librispeech'                   # Specify corpus
+    path: 'datasets/'          # Path to raw LibriSpeech dataset
+    train_split: ['dev.csv'] # Name of data splits to be used as training set
+    dev_split: ['dev.csv']              # Name of data splits to be used as validation set
+    bucketing:  True                       # Enable/Disable bucketing 
+    batch_size: 12
+  audio:                                  # Attributes of audio feature
+    feat_type: 'fbank'
+    feat_dim:  40
+    frame_length: 25                      # ms
+    frame_shift: 10                       # ms
+
+    apply_cmvn: True
+
+    delta_order: 2                        # 0: do nothing, 1: add delta, 2: add delta and accelerate
+    delta_window_size: 2
+  text:
+    mode: 'character'                       # 'character'/'word'/'subword'
+    vocab_file: './data/vocab_rus.txt'
+    # vocab_size: 37
