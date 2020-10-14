@@ -52,7 +52,7 @@ class MyTransformer(nn.Module):
         # out_ctc = self.lin_ctc(enc).permute(1, 0, 2) # for asr
         # out = self.transformer.decoder(target.permute(1, 0, 2), enc, tgt_mask=trg_mask) # for asr
         out = self.transformer.decoder(target.permute(1, 0, 2), enc) # for classifier
-        # out = torch.view(-1, out) # for classifier
+        out = torch.view(-1, out) # for classifier
         # out = out.max(dim=0, keepdim=True)[0]
         out = self.out_lin_class(out.permute(1, 0, 2)[:, 1, :]) # for classifier
         # out = self.out_lin(out.permute(1, 0, 2)) # for asr
